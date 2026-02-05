@@ -7,8 +7,6 @@ enum macro_layers {
      LAYER_BASE = 0,
      LAYER_MAC_ONE,
      LAYER_MAC_TWO,
-     LAYER_MAC_THREE,
-     LAYER_MAC_FOUR,
 };
 
 enum custom_keys {
@@ -20,9 +18,8 @@ enum custom_keys {
      AUTO_FOR_C,
      AUTO_WHILE_C,
      AUTO_CASE_C,
-     DRAG_SCROLL,
      SWITCH_TAB,
-     OPEN_YT,
+     OPEN_CHROME,
      OPEN_WS,
      OPEN_VSC,
      OPEN_PUTTY,
@@ -36,12 +33,8 @@ enum custom_keys {
 #define NUM MO(LAYER_NUM)
 #define MACRO MO(LAYER_MACRO)
 
-#define SFT_Z SFT_T(KC_Z)
-#define SFT_SLSH SFT_T(KC_SLSH)
-#define GUI_SPC GUI_T(KC_SPC)
-#define NUM_ENT LT(LAYER_NUM,KC_ENT)
-#define QUOTE_BSPC  LT(LAYER_QUOTE,KC_BSPC)
-#define MSE_L LT(LAYER_MSE,KC_L)
+#define MAC_ONE_SS LT(LAYER_MAC_ONE,SCREENSNIP)
+#define MAC_TWO_VSC  LT(LAYER_MAC_TWO,OPEN_VSC)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      switch (keycode) {
@@ -94,11 +87,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                }
                break;
 
-          case DRAG_SCROLL:
-               // Toggle set_scrolling when DRAG_SCROLL key is pressed or released
-               set_scrolling = record->event.pressed;
-               break;
-
           case SWITCH_TAB:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -108,7 +96,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                }
                break;
 
-          case OPEN_YT:
+          case OPEN_CHROME:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
                     SEND_STRING_DELAY(SS_LGUI("r"), 200);
@@ -123,7 +111,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           case OPEN_WS:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
-                    SEND_STRING(SS_LGUI("4")); //this requires whatsapp to be at first icon in the task bar 
+                    SEND_STRING(SS_LGUI("4")); //this requires whatsapp to be at forth icon in the task bar 
                } else {
                     // when keycode QMKURL is released
                }
@@ -195,53 +183,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
-  // ╭─────────────────────────────────────────────╮
-          OPEN_STEAM,    OPEN_YTM,    OPEN_FOLDER,    SCREENSNIP,    OPEN_WS,
-  // ├─────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-  // ├─────────────────────────────────────────────┤
-          SFT_Z,   KC_X,    KC_C,    KC_V,    KC_B,
-  // ╰─────────────────────────────────────────────╯
+  // ╭────────────────────────────────────────────────────────────────────────────────╮
+          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    MAC_TWO_VSC,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          OPEN_STEAM,   OPEN_YTM,      OPEN_FOLDER,     OPEN_WS,        MAC_ONE_SS,
+  // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
   [LAYER_MAC_ONE] = LAYOUT(
-  // ╭─────────────────────────────────────────────╮
-          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
-  // ├─────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-  // ├─────────────────────────────────────────────┤
-          SFT_Z,   KC_X,    KC_C,    KC_V,    KC_B,
-  // ╰─────────────────────────────────────────────╯
+  // ╭────────────────────────────────────────────────────────────────────────────────╮
+          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_G,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B,
+  // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
   [LAYER_MAC_TWO] = LAYOUT(
-  // ╭─────────────────────────────────────────────╮
-          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
-  // ├─────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-  // ├─────────────────────────────────────────────┤
-          SFT_Z,   KC_X,    KC_C,    KC_V,    KC_B,
-  // ╰─────────────────────────────────────────────╯
-  ),
-
-  [LAYER_MAC_THREE] = LAYOUT(
-  // ╭─────────────────────────────────────────────╮
-          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
-  // ├─────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-  // ├─────────────────────────────────────────────┤
-          SFT_Z,   KC_X,    KC_C,    KC_V,    KC_B,
-  // ╰─────────────────────────────────────────────╯
-  ),
-
-  [LAYER_MAC_FOUR] = LAYOUT(
-  // ╭─────────────────────────────────────────────╮
-          KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
-  // ├─────────────────────────────────────────────┤
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
-  // ├─────────────────────────────────────────────┤
-          SFT_Z,   KC_X,    KC_C,    KC_V,    KC_B,
-  // ╰─────────────────────────────────────────────╯
+  // ╭────────────────────────────────────────────────────────────────────────────────╮
+          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_G,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B,
+  // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
 };
