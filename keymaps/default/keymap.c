@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 
-enum modded_charybdis_keymap_layers {
+enum macro_layers {
      LAYER_BASE = 0,
      LAYER_MAC_ONE,
      LAYER_MAC_TWO,
