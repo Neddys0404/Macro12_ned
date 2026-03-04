@@ -246,9 +246,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    MAC_TWO_VSC,
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_YTM,      OPEN_FOLDER,     OPEN_WS,        MAC_ONE_SS,
+          OPEN_STEAM,   OPEN_YTM,      OPEN_FOLDER,     OPEN_WS,        MAC_ONE_SS
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
@@ -256,9 +256,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_G,
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B,
+          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
@@ -266,11 +266,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_G,
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B,
+          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B
   // ╰────────────────────────────────────────────────────────────────────────────────╯
-  ),
+  )
 
 };
 // clang-format on
