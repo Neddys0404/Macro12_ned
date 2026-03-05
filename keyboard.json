@@ -40,17 +40,17 @@
         "bootmagic": false
     },
     "matrix_pins": {
-        "cols": ["GP21", "GP15", "GP6", "GP7", "GP28", "GP29"],
-        "rows": ["GP23", "GP5", "GP4"]
+        "cols": ["GP13", "GP12", "GP11", "GP10", "GP9"],
+        "rows": ["GP29", "GP28", "GP27"]
     },
     "matrix_size": {
         "rows": 3,
-        "cols": 6
+        "cols": 5
     },
     "encoder": {
         "rotary": [
             { "pin_a": "GP2", "pin_b": "GP3" },
-            { "pin_a": "GP8", "pin_b": "GP9" }
+            { "pin_a": "GP6", "pin_b": "GP7" }
         ]
     },
     "processor": "RP2040",
