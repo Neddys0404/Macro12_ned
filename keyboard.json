@@ -2,7 +2,7 @@
     "manufacturer": "Xcube Tech",
     "keyboard_name": "macro12_invSys",
     "maintainer": "Neddys0404",
-    "development_board": "promicro_rp2040",
+    "development_board": "nice_nano_v2",
     "diode_direction": "ROW2COL",
     "url": "-",
     "layout_aliases": {
@@ -40,8 +40,8 @@
         "bootmagic": false
     },
     "matrix_pins": {
-        "cols": ["GP7", "GP6", "GP5", "GP4", "GP3"],
-        "rows": ["GP28", "GP27", "GP26"]
+        "cols": ["P1.06", "P1.04", "P0.11", "P0.24", "P1.11"],
+        "rows": ["P0.22", "P0.20", "P0.17"]
     },
     "matrix_size": {
         "rows": 3,
@@ -49,12 +49,12 @@
     },
     "encoder": {
         "rotary": [
-            { "pin_a": "GP12", "pin_b": "GP11" },
-            { "pin_a": "GP10", "pin_b": "GP9" }
+            { "pin_a": "P1.13", "pin_b": "P1.15" },
+            { "pin_a": "P0.02", "pin_b": "P0.29" }
         ]
     },
-    "processor": "RP2040",
-    "bootloader": "rp2040",
+    "processor": "nrf52840",
+    "bootloader": "adafruit",
     "build": {
         "firmware_format": "uf2"
     }
