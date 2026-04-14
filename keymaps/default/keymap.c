@@ -30,58 +30,38 @@ enum custom_keys {
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
+
+     uint8_t layer = get_highest_layer(layer_state);
      
      if (index == 0) {
-          switch (get_highest_layer(layer_state)) {
+          switch (layer) {
                case LAYER_BASE:
-                    if (clockwise) {
-                         tap_code(KC_VOLU);
-                    } else {
-                         tap_code(KC_VOLD);
-                    }
+                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
                     break;
-     
                case LAYER_MAC_ONE:
-                    if (clockwise) {
-                         tap_code(KC_PGDN);
-                    } else {
-                         tap_code(KC_PGUP);
-                    }
+                    tap_code(clockwise ? KC_PGDN : KC_PGUP);
                     break;
-     
                case LAYER_MAC_TWO:
-                    if (clockwise) {
-                         tap_code(KC_RIGHT);
-                    } else {
-                         tap_code(KC_LEFT);
-                    }
+                    tap_code(clockwise ? KC_RIGHT : KC_LEFT);
+                    break;
+               default:
+                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
                     break;
           }
      }
      else if (index == 1) {
-          switch (get_highest_layer(layer_state)) {
+          switch (layer) {
                case LAYER_BASE:
-                    if (clockwise) {
-                         tap_code(KC_VOLU);
-                    } else {
-                         tap_code(KC_VOLD);
-                    }
+                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
                     break;
-     
                case LAYER_MAC_ONE:
-                    if (clockwise) {
-                         tap_code(KC_VOLU);
-                    } else {
-                         tap_code(KC_VOLD);
-                    }
+                    tap_code(clockwise ? KC_PGDN : KC_PGUP);
                     break;
-     
                case LAYER_MAC_TWO:
-                    if (clockwise) {
-                         tap_code(KC_RIGHT);
-                    } else {
-                         tap_code(KC_LEFT);
-                    }
+                    tap_code(clockwise ? KC_RIGHT : KC_LEFT);
+                    break;
+               default:
+                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
                     break;
           }
      }
