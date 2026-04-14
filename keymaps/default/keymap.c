@@ -31,13 +31,11 @@ enum custom_keys {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
 
-     uint8_t layer = get_highest_layer(layer_state);
-     
      if (index == 0) {
           tap_code(clockwise ? KC_VOLU : KC_VOLD);
      }
      else if (index == 1) {
-          tap_code(clockwise ? KC_WH_D : KC_WH_U);
+          tap_code(clockwise ? MS_WHLU : MS_WHLD);
      }
 
      return true;
