@@ -3,7 +3,7 @@
     "keyboard_name": "macro12_invSys",
     "maintainer": "Neddys0404",
     "development_board": "promicro_rp2040",
-    "diode_direction": "ROW2COL",
+    "diode_direction": "COL2ROW",
     "url": "-",
     "layout_aliases": {
         "LAYOUT_modded_bk_charybdis": "LAYOUT"
