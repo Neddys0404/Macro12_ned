@@ -70,9 +70,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
      
                case LAYER_MAC_ONE:
                     if (clockwise) {
-                         tap_code(KC_PGDN);
+                         tap_code(KC_VOLU);
                     } else {
-                         tap_code(KC_PGUP);
+                         tap_code(KC_VOLD);
                     }
                     break;
      
@@ -88,10 +88,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
      return true;
 }
-
-#define QUOTE MO(LAYER_QUOTE)
-#define NUM MO(LAYER_NUM)
-#define MACRO MO(LAYER_MACRO)
 
 #define MAC_ONE_SS LT(LAYER_MAC_ONE,SCREENSNIP)
 #define MAC_TWO_VSC  LT(LAYER_MAC_TWO,OPEN_VSC)
@@ -122,6 +118,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     // when keycode QMKURL is released
                }
                break;
+
+          case AUTO_CASE_P:
+               if (record->event.pressed) {
+                    // when keycode QMKURL is pressed
+                    SEND_STRING("condition = 0\n\nmatch condition:\n" SS_TAP(X_TAB) "case 0:\n" SS_TAP(X_TAB) SS_TAP(X_TAB) "break\n" SS_TAP(X_TAB) "case _:\n" SS_TAP(X_TAB) SS_TAP(X_TAB) "break\n");
+               } else {
+                    // when keycode QMKURL is released
+               }
+               break;
+
           case AUTO_IF_C:
                if   (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -142,6 +148,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
                     SEND_STRING("while () {\n\n\n\n}\n" SS_TAP(X_UP) SS_TAP(X_UP) SS_TAP(X_UP) SS_TAP(X_TAB));
+               } else {
+                    // when keycode QMKURL is released
+               }
+               break;
+
+          case AUTO_CASE_C:
+               if (record->event.pressed) {
+                    // when keycode QMKURL is pressed
+                    SEND_STRING("switch () {\n" SS_TAP(X_TAB) "case :\n" SS_TAP(X_TAB) SS_TAP(X_TAB) "break;\n" SS_TAP(X_TAB) "default:\n" SS_TAP(X_TAB) SS_TAP(X_TAB) "break;\n}");
                } else {
                     // when keycode QMKURL is released
                }
@@ -248,7 +263,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────┤
           AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_YTM,      OPEN_FOLDER,     OPEN_WS,        MAC_ONE_SS
+          OPEN_STEAM,   OPEN_YTM,      MAC_TWO_VSC,     MAC_ONE_SS,     SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
@@ -258,7 +273,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────┤
           AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B
+          OPEN_STEAM,   OPEN_FOLDER,       OPEN_VSC,    ___________,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
@@ -268,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────┤
           AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,   OPEN_WS,         OPEN_VSC,       KC_B
+          OPEN_STEAM,   OPEN_FOLDER,   ____________,     SCREENSNIP,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   )
 
