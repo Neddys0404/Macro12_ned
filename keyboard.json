@@ -47,6 +47,12 @@
         "rows": 3,
         "cols": 5
     },
+    "encoder": {
+        "rotary": [
+            { "pin_a": "GP3", "pin_b": "GP4" },
+            { "pin_a": "GP5", "pin_b": "GP6" }
+        ]
+    },
     "processor": "RP2040",
     "bootloader": "rp2040",
     "build": {
