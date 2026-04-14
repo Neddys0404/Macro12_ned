@@ -34,36 +34,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
      uint8_t layer = get_highest_layer(layer_state);
      
      if (index == 0) {
-          switch (layer) {
-               case LAYER_BASE:
-                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
-                    break;
-               case LAYER_MAC_ONE:
-                    tap_code(clockwise ? KC_PGDN : KC_PGUP);
-                    break;
-               case LAYER_MAC_TWO:
-                    tap_code(clockwise ? KC_RIGHT : KC_LEFT);
-                    break;
-               default:
-                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
-                    break;
-          }
+          tap_code(clockwise ? KC_VOLU : KC_VOLD);
      }
      else if (index == 1) {
-          switch (layer) {
-               case LAYER_BASE:
-                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
-                    break;
-               case LAYER_MAC_ONE:
-                    tap_code(clockwise ? KC_PGDN : KC_PGUP);
-                    break;
-               case LAYER_MAC_TWO:
-                    tap_code(clockwise ? KC_RIGHT : KC_LEFT);
-                    break;
-               default:
-                    tap_code(clockwise ? KC_VOLU : KC_VOLD);
-                    break;
-          }
+          tap_code(clockwise ? KC_WH_D : KC_WH_U);
      }
 
      return true;
