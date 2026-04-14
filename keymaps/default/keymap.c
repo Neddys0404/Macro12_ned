@@ -29,17 +29,13 @@ enum custom_keys {
      SCREENSNIP,
 };
 
-bool encoder_update_user(uint8_t index, bool clockwise) {
-
-     if (index == 0) {
-          tap_code(clockwise ? KC_VOLU : KC_VOLD);
-     }
-     else if (index == 1) {
-          tap_code(clockwise ? MS_WHLU : MS_WHLD);
-     }
-
-     return true;
-}
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [LAYER_BASE] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+    [LAYER_MAC_ONE] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
+    [LAYER_MAC_TWO] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_LEFT, KC_RIGHT) }
+};
+#endif
 
 #define MAC_ONE_SS LT(LAYER_MAC_ONE,SCREENSNIP)
 #define MAC_TWO_VSC  LT(LAYER_MAC_TWO,OPEN_VSC)
