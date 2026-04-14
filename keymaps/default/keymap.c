@@ -273,7 +273,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────┤
           AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,       OPEN_VSC,    ___________,    SWITCH_TAB
+          OPEN_STEAM,   OPEN_FOLDER,       OPEN_VSC,        _______,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
@@ -283,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────┤
           AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,   ____________,     SCREENSNIP,    SWITCH_TAB
+          OPEN_STEAM,   OPEN_FOLDER,        _______,     SCREENSNIP,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   )
 
