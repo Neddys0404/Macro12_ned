@@ -7,10 +7,14 @@ enum macro_layers {
      LAYER_BASE = 0,
      LAYER_MAC_ONE,
      LAYER_MAC_TWO,
+     LAYER_MAC_THREE,
+     LAYER_MAC_FOUR
 };
 
 enum custom_keys {
-     AUTO_IF_P = SAFE_RANGE,
+     OPEN_VSC = SAFE_RANGE,
+     SCREENSNIP,
+     AUTO_IF_P,
      AUTO_FOR_P,
      AUTO_WHILE_P,
      AUTO_CASE_P,
@@ -19,26 +23,11 @@ enum custom_keys {
      AUTO_WHILE_C,
      AUTO_CASE_C,
      SWITCH_TAB,
-     OPEN_CHROME,
      OPEN_WS,
-     OPEN_VSC,
-     OPEN_PUTTY,
      OPEN_STEAM,
      OPEN_YTM,
-     OPEN_FOLDER,
-     SCREENSNIP,
+     OPEN_FOLDER
 };
-
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [LAYER_BASE] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN)  },
-    [LAYER_MAC_ONE] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN) },
-    [LAYER_MAC_TWO] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_LEFT, KC_RIGHT) }
-};
-#endif
-
-#define MAC_ONE_SS LT(LAYER_MAC_ONE,SCREENSNIP)
-#define MAC_TWO_VSC  LT(LAYER_MAC_TWO,OPEN_VSC)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      switch (keycode) {
@@ -49,7 +38,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
+
           case AUTO_FOR_P:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -57,7 +47,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
           case AUTO_WHILE_P:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -65,7 +55,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case AUTO_CASE_P:
                if (record->event.pressed) {
@@ -74,7 +64,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case AUTO_IF_C:
                if   (record->event.pressed) {
@@ -83,7 +73,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
+
           case AUTO_FOR_C:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -91,7 +82,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
+
           case AUTO_WHILE_C:
                if (record->event.pressed) {
                     // when keycode QMKURL is pressed
@@ -99,7 +91,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case AUTO_CASE_C:
                if (record->event.pressed) {
@@ -108,7 +100,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case SWITCH_TAB:
                if (record->event.pressed) {
@@ -117,19 +109,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
-
-          case OPEN_CHROME:
-               if (record->event.pressed) {
-                    // when keycode QMKURL is pressed
-                    SEND_STRING_DELAY(SS_LGUI("r"), 200);
-                    SEND_STRING("chrome "); 
-                    SEND_STRING("https://www.youtube.com"); 
-                    SEND_STRING(SS_TAP(X_ENTER)); 
-               } else {
-                    // when keycode QMKURL is released
-               }
-               break;
+               return true;
 
           case OPEN_WS:
                if (record->event.pressed) {
@@ -138,7 +118,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case OPEN_VSC:
                if (record->event.pressed) {
@@ -149,18 +129,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
-
-          case OPEN_PUTTY:
-               if (record->event.pressed) {
-                    // when keycode QMKURL is pressed
-                    SEND_STRING_DELAY(SS_LGUI("r"), 200); 
-                    SEND_STRING("PUTTY"); 
-                    SEND_STRING(SS_TAP(X_ENTER)); 
-               } else {
-                    // when keycode QMKURL is released
-               }
-               break;
+               return true;
 
           case OPEN_STEAM:
                if (record->event.pressed) {
@@ -169,7 +138,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case OPEN_YTM:
                if (record->event.pressed) {
@@ -178,7 +147,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case OPEN_FOLDER:
                if (record->event.pressed) {
@@ -187,7 +156,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
 
           case SCREENSNIP:
                if (record->event.pressed) {
@@ -198,40 +167,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                } else {
                     // when keycode QMKURL is released
                }
-               break;
+               return true;
+
+          default:
+               return true; // Process all other keycodes normally
      }
-     return true;
 };
+
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [LAYER_BASE] = { ENCODER_CCW_CW(MS_WHLU, MS_WHLD),  ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) },
+    [LAYER_MAC_ONE] = { ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),  ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) },
+    [LAYER_MAC_TWO] = { ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),  ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) },
+    [LAYER_MAC_THREE] = { ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),  ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) },
+    [LAYER_MAC_FOUR] = { ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),  ENCODER_CCW_CW(KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP) }
+};
+#endif
+
+#define LONE_SS LT(LAYER_MAC_ONE,KC_PSCR)
+#define LTWO_PLYPSE LT(LAYER_MAC_TWO,KC_MEDIA_PLAY_PAUSE)
+#define LTHREE_PRVTRACK LT(LAYER_MAC_THREE,KC_MEDIA_PREV_TRACK)
+#define LFOUR_NXTTRACK LT(LAYER_MAC_FOUR,KC_MEDIA_NEXT_TRACK)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭────────────────────────────────────────────────────────────────────────────────╮
-          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+            LONE_SS,   LTWO_PLYPSE, LTHREE_PRVTRACK,    LFOUR_NXTTRACK, KC_AUDIO_MUTE,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
+          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,       AUTO_CASE_P,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_YTM,      MAC_TWO_VSC,     MAC_ONE_SS,     SWITCH_TAB
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,       AUTO_CASE_C,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
   [LAYER_MAC_ONE] = LAYOUT(
   // ╭────────────────────────────────────────────────────────────────────────────────╮
-          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+            _______,       XXXXXXX,         XXXXXXX,           XXXXXXX, KC_AUDIO_MUTE,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
+          SWITCH_TAB,    AUTO_FOR_P,    AUTO_WHILE_P,       AUTO_CASE_P,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,       OPEN_VSC,        _______,    SWITCH_TAB
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,       AUTO_CASE_C,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   ),
 
   [LAYER_MAC_TWO] = LAYOUT(
   // ╭────────────────────────────────────────────────────────────────────────────────╮
-          AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
+            XXXXXXX,       _______,         XXXXXXX,           XXXXXXX, KC_AUDIO_MUTE,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
+        OPEN_FOLDER,    AUTO_FOR_P,    AUTO_WHILE_P,       AUTO_CASE_P,    
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          OPEN_STEAM,   OPEN_FOLDER,        _______,     SCREENSNIP,    SWITCH_TAB
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,       AUTO_CASE_C,    SWITCH_TAB
+  // ╰────────────────────────────────────────────────────────────────────────────────╯
+  ),
+
+  [LAYER_MAC_THREE] = LAYOUT(
+  // ╭────────────────────────────────────────────────────────────────────────────────╮
+            XXXXXXX,       XXXXXXX,         _______,           XXXXXXX, KC_AUDIO_MUTE,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+            OPEN_WS,    AUTO_FOR_P,    AUTO_WHILE_P,       AUTO_CASE_P,    
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,       AUTO_CASE_C,    SWITCH_TAB
+  // ╰────────────────────────────────────────────────────────────────────────────────╯
+  ),
+
+  [LAYER_MAC_FOUR] = LAYOUT(
+  // ╭────────────────────────────────────────────────────────────────────────────────╮
+            XXXXXXX,       XXXXXXX,         XXXXXXX,           _______, KC_AUDIO_MUTE,
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+           OPEN_YTM,    AUTO_FOR_P,    AUTO_WHILE_P,       AUTO_CASE_P,    
+  // ├────────────────────────────────────────────────────────────────────────────────┤
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,       AUTO_CASE_C,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
   )
 
