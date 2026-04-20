@@ -209,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
   // ├────────────────────────────────────────────────────────────────────────────────┤
           OPEN_STEAM,   OPEN_YTM,      MAC_TWO_VSC,     MAC_ONE_SS,     SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
@@ -219,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
   // ├────────────────────────────────────────────────────────────────────────────────┤
           OPEN_STEAM,   OPEN_FOLDER,       OPEN_VSC,        _______,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
@@ -229,7 +229,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────────────╮
           AUTO_IF_P,    AUTO_FOR_P,    AUTO_WHILE_P,    AUTO_CASE_P,    OPEN_WS,
   // ├────────────────────────────────────────────────────────────────────────────────┤
-          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    
+          AUTO_IF_C,    AUTO_FOR_C,    AUTO_WHILE_C,    AUTO_CASE_C,    KC_NO,
   // ├────────────────────────────────────────────────────────────────────────────────┤
           OPEN_STEAM,   OPEN_FOLDER,        _______,     SCREENSNIP,    SWITCH_TAB
   // ╰────────────────────────────────────────────────────────────────────────────────╯
