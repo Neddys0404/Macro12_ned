@@ -40,7 +40,7 @@
         "bootmagic": false
     },
     "matrix_pins": {
-        "cols": ["GP26", "GP27", "GP28", "GP29", "GP24"],
+        "cols": ["GP26", "GP27", "GP28", "GP29", "GP15"],
         "rows": ["GP13", "GP12", "GP11"]
     },
     "matrix_size": {
